@@ -1,11 +1,15 @@
 import React from 'react';
 
-function App() {
-	return (
-		<div className="App">
-			<h1>Hello</h1>
-		</div>
-	);
-}
+import Header from './components/Header';
+import Timeline from './pages/Timeline';
+import GlobalStyle from './utils/globalStyles';
+
+const App = () => (
+	<div className="App">
+		<GlobalStyle />
+		<Header />
+		<Timeline />
+	</div>
+);
 
 export default App;
