@@ -24,6 +24,7 @@ const Image = styled.img`
 	position: absolute;
 	z-index: -1;
 	border-radius: 0;
+	box-shadow: inset 0 0 10px white;
 
 	@media (min-width: 650px) {
 		width: 650px;
