@@ -6,7 +6,7 @@ import breakPoints from '../../utils/constants';
 const Container = styled.div`
 	margin: 0;
 	box-shadow: 1px 1px 20px white;
-	height: 240px;
+	height: 190px;
 
 	@media (min-width: ${breakPoints.mobileMax}) {
 		height: 340px;
@@ -27,7 +27,7 @@ const Title = styled.h1`
 const Image = styled.img`
 	top: 0;
 	right: 0;
-	height: 240px;
+	height: 190px;
 	width: 100%;
 	left: 50%;
 	transform: translate(-50%, 0);
