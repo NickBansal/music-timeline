@@ -6,7 +6,7 @@ export default createGlobalStyle`
   }
   body {
     padding: 0;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     text-align: center;
   }

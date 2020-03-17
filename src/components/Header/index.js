@@ -4,7 +4,7 @@ import dj from '../../assets/dj.jpg';
 
 const Container = styled.div`
 	margin: 0;
-	height: 240px;
+	height: 340px;
 `;
 
 const Title = styled.h1`
@@ -17,19 +17,14 @@ const Title = styled.h1`
 const Image = styled.img`
 	top: 0;
 	right: 0;
-	height: 240px;
-	width: 100%;
+	height: 340px;
+	width: 1000px;
 	left: 50%;
 	transform: translate(-50%, 0);
 	position: absolute;
 	z-index: -1;
 	border-radius: 0;
-	box-shadow: inset 0 0 10px white;
-
-	@media (min-width: 650px) {
-		width: 650px;
-		border-radius: 40%;
-	}
+	filter: blur(1px);
 `;
 
 const Small = styled.p`
