@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import breakPoints from '../../utils/styleConstants';
 
@@ -33,7 +33,7 @@ const Era = styled.p`
 	}
 `;
 
-const Icon = styled.i`
+const PlusIcon = styled.i`
 	font-size: 25px;
 	cursor: pointer;
 	@media (min-width: ${breakPoints.mobileMax}) {
@@ -42,48 +42,23 @@ const Icon = styled.i`
 `;
 
 const AlteredState = () => {
+	const [era, setEra] = useState(null);
+	const eraLabels = ['1960', '1970', '1980', '1990', '2000'];
+
 	return (
 		<Container>
-			<TimePeriod>
-				<Era>1960&apos;s</Era>
-				<Icon
-					className="fa-2x fas fa-plus"
-					id="1960"
-					onClick={e => console.log(e.target.id)}
-				/>
-			</TimePeriod>
-			<TimePeriod>
-				<Era>1970&apos;s</Era>
-				<Icon
-					className="fa-2x fas fa-plus"
-					id="1970"
-					onClick={e => console.log(e.target.id)}
-				/>
-			</TimePeriod>
-			<TimePeriod>
-				<Era>1980&apos;s</Era>
-				<Icon
-					className="fa-2x fas fa-plus"
-					id="1980"
-					onClick={e => console.log(e.target.id)}
-				/>
-			</TimePeriod>
-			<TimePeriod>
-				<Era>1990&apos;s</Era>
-				<Icon
-					className="fa-2x fas fa-plus"
-					id="1990"
-					onClick={e => console.log(e.target.id)}
-				/>
-			</TimePeriod>
-			<TimePeriod>
-				<Era>2000&apos;s</Era>
-				<Icon
-					className="fa-2x fas fa-plus"
-					id="2000"
-					onClick={e => console.log(e.target.id)}
-				/>
-			</TimePeriod>
+			{eraLabels.map((year, index) => {
+				const symbol = era === index ? 'minus' : 'plus';
+				return (
+					<TimePeriod key={year}>
+						<Era>{year}</Era>
+						<PlusIcon
+							className={`fa-2x fas fa-${symbol}`}
+							onClick={() => setEra(index)}
+						/>
+					</TimePeriod>
+				);
+			})}
 		</Container>
 	);
 };
