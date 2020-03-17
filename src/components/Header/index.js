@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import dj from '../../assets/dj.jpg';
-import breakPoints from '../../utils/constants';
+import breakPoints from '../../utils/styleConstants';
 
 const Container = styled.div`
 	margin: 0;
@@ -56,7 +56,7 @@ const Header = () => {
 	return (
 		<Container>
 			<Title>Timeline</Title>
-			<Small>Electronic music</Small>
+			<Small>Altered State</Small>
 			<Image src={dj} alt="DJ decks" />
 		</Container>
 	);
