@@ -1,7 +1,6 @@
 import React from 'react';
+import AlteredState from '../AlteredState';
 
-const Timeline = () => {
-	return <h1>Body</h1>;
-};
+const Timeline = () => <div>Body</div>;
 
 export default Timeline;
