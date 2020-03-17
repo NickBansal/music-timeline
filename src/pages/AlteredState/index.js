@@ -36,8 +36,42 @@ const Era = styled.p`
 const PlusIcon = styled.i`
 	font-size: 25px;
 	cursor: pointer;
+	animation: zoom-in 1s 1;
+
 	@media (min-width: ${breakPoints.mobileMax}) {
 		font-size: 30px;
+	}
+
+	@keyframes zoom-in {
+		0% {
+			opacity: 0;
+			transform: scale(0);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+`;
+
+const MinusIcon = styled.i`
+	font-size: 25px;
+	cursor: pointer;
+	animation: zoom-in 1s 1;
+
+	@media (min-width: ${breakPoints.mobileMax}) {
+		font-size: 30px;
+	}
+
+	@keyframes zoom-out {
+		0% {
+			opacity: 1;
+			transform: scale(1);
+		}
+		100% {
+			opacity: 0;
+			transform: scale(0);
+		}
 	}
 `;
 
@@ -48,14 +82,20 @@ const AlteredState = () => {
 	return (
 		<Container>
 			{eraLabels.map((year, index) => {
-				const symbol = era === index ? 'minus' : 'plus';
 				return (
 					<TimePeriod key={year}>
-						<Era>{year}</Era>
-						<PlusIcon
-							className={`fa-2x fas fa-${symbol}`}
-							onClick={() => setEra(index)}
-						/>
+						<Era>{year}&apos;s</Era>
+						{era === index ? (
+							<MinusIcon
+								className="fa-2x fas fa-minus"
+								onClick={() => setEra(null)}
+							/>
+						) : (
+							<PlusIcon
+								className="fa-2x fas fa-plus"
+								onClick={() => setEra(index)}
+							/>
+						)}
 					</TimePeriod>
 				);
 			})}

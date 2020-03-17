@@ -18,6 +18,7 @@ const Title = styled.h1`
 	margin: 0;
 	padding: 32px 0 0 0;
 	color: white;
+	font-weight: 100;
 
 	@media (min-width: ${breakPoints.mobileMax}) {
 		font-size: 100px;
