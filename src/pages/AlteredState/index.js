@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import breakPoints from '../../utils/styleConstants';
 
+import Events from './Events';
+
 const Container = styled.div`
 	color: white;
 	width: 90%;
@@ -24,24 +26,8 @@ const TimePeriod = styled.div`
 	@media (min-width: ${breakPoints.mobileMax}) {
 		height: 70px;
 	}
-`;
 
-const Era = styled.p`
-	font-size: 20px;
-	@media (min-width: ${breakPoints.mobileMax}) {
-		font-size: 30px;
-	}
-`;
-
-const PlusIcon = styled.i`
-	font-size: 25px;
-	cursor: pointer;
 	animation: zoom-in 1s 1;
-
-	@media (min-width: ${breakPoints.mobileMax}) {
-		font-size: 30px;
-	}
-
 	@keyframes zoom-in {
 		0% {
 			opacity: 0;
@@ -54,15 +40,24 @@ const PlusIcon = styled.i`
 	}
 `;
 
-const MinusIcon = styled.i`
+const Decade = styled.p`
+	font-size: 20px;
+	@media (min-width: ${breakPoints.mobileMax}) {
+		font-size: 30px;
+	}
+`;
+
+const PlusIcon = styled.i`
 	font-size: 25px;
 	cursor: pointer;
-	animation: zoom-in 1s 1;
 
 	@media (min-width: ${breakPoints.mobileMax}) {
 		font-size: 30px;
 	}
+`;
 
+const MinusIcon = styled(PlusIcon)`
+	animation: zoom-in 1s 1;
 	@keyframes zoom-out {
 		0% {
 			opacity: 1;
@@ -77,26 +72,30 @@ const MinusIcon = styled.i`
 
 const AlteredState = () => {
 	const [era, setEra] = useState(null);
-	const eraLabels = ['1960', '1970', '1980', '1990', '2000'];
+	const decadeLabels = ["1960's", "1970's", "1980's", "1990's", "2000's"];
 
 	return (
 		<Container>
-			{eraLabels.map((year, index) => {
+			{decadeLabels.map((year, index) => {
 				return (
-					<TimePeriod key={year}>
-						<Era>{year}&apos;s</Era>
-						{era === index ? (
-							<MinusIcon
-								className="fa-2x fas fa-minus"
-								onClick={() => setEra(null)}
-							/>
-						) : (
-							<PlusIcon
-								className="fa-2x fas fa-plus"
-								onClick={() => setEra(index)}
-							/>
-						)}
-					</TimePeriod>
+					<>
+						<TimePeriod key={year}>
+							<Decade>{year}</Decade>
+							{era === index ? (
+								<MinusIcon
+									className="fa-2x fas fa-minus"
+									currentYear={era === index}
+									onClick={() => setEra(null)}
+								/>
+							) : (
+								<PlusIcon
+									className="fa-2x fas fa-plus"
+									onClick={() => setEra(index)}
+								/>
+							)}
+						</TimePeriod>
+						{era === index && <Events id={year} />}
+					</>
 				);
 			})}
 		</Container>
